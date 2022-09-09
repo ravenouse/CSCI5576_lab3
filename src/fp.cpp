@@ -150,9 +150,9 @@ public:
 
 	    
 	    if ( PTCL.x[k] < x0     ) { PTCL.active[k] = -1;  iPEnew = myMPI.iPE - 1 ; } 
-	    if ( PTCL.x[k] > x1     ) { /* TO-DO */ }
-	    if ( PTCL.y[k] < y0     ) { /* TO-DO */ }
-	    if ( PTCL.y[k] > y1     ) { /* TO-DO */ }
+	    if ( PTCL.x[k] > x1     ) { PTCL.active[k] = -1;  iPEnew = myMPI.iPE + 1 ; }
+	    if ( PTCL.y[k] < y0     ) { PTCL.active[k] = -1;  jPEnew = myMPI.jPE - 1 ; }
+	    if ( PTCL.y[k] > y1     ) { PTCL.active[k] = -1;  jPEnew = myMPI.jPE + 1 ; }
 	    
 	  }
 
@@ -165,7 +165,7 @@ public:
 	    if ( jPEnew >= 0 && jPEnew < myMPI.nPEy )
 	      {
 		ptcl_send_list.push_back(k);
-		ptcl_send_PE  .push_back( /* TO-DO */);
+		ptcl_send_PE  .push_back(k);
 	      }
 
 	    PTCL.active[k] = 0;  // Remove it from the list of active particles

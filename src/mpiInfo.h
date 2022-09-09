@@ -112,9 +112,9 @@ class mpiInfo
     nei_nw = nei_sw = nei_ne = nei_se = -1;
     
     if ( iPE > 0      && jPE > 0      )  nei_sw = myPE - 1 - nPEx  ;
-    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = /* TO-DO */ ;
-    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = /* TO-DO */ ;
-    if ( iPE > nPEx-1 && jPE < nPEy-1 )  nei_ne = /* TO-DO */ ;
+    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = /myPE -1 / ;
+    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = /myPE + 1/ ;
+    if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = /mPE + 1 + nPEy/ ;
 
     // Acquire memory for the communication between adjacent processors:
     countx = nRealx + 2;
@@ -157,15 +157,16 @@ class mpiInfo
 
     int numToSend = ptcl_send_list.size();      int maxToSend;
 
-    MPI_Iallreduce( /* TO-DO */ );  MPI_Wait(&request,&status);  
+    MPI_Iallreduce(numToSend, maxToSend, numberToSend, MPI_INT, MPI_MAX, MPI_COMM_WORLD, &request );  MPI_Wait(&request,&status);  
 
-    // (2) Allocate contributions to the upcoming Gather operation.  Here, "C" for "Contribution" to be Gathered
+    // (2) Allocate contributions to the upcoming Gather operation.  
+    // Here, "C" for "Contribution" to be Gathered
 
-    int    *Cptcl_PE;  Cptcl_PE = new int    [ /* TO-DO */ ];  // Particles' destination PEs 
-    double *Cptcl_x ;  Cptcl_x  = new double [ /* TO-DO */ ];
-    double *Cptcl_y ;  Cptcl_y  = new double [ /* TO-DO */ ];
-    double *Cptcl_vx;  Cptcl_vx = new double [ /* TO-DO */ ];
-    double *Cptcl_vy;  Cptcl_vy = new double [ /* TO-DO */ ];
+    int    *Cptcl_PE;  Cptcl_PE = new int    [maxToSend];  // Particles' destination PEs 
+    double *Cptcl_x ;  Cptcl_x  = new double [maxToSend];  // Particles' x-positions
+    double *Cptcl_y ;  Cptcl_y  = new double [maxToSend];  // Particles' y-positions
+    double *Cptcl_vx;  Cptcl_vx = new double [maxToSend];  // Particles' x-velocities
+    double *Cptcl_vy;  Cptcl_vy = new double [maxToSend];  // Particles' y-velocities
 
     // (3) Populate contributions on all processors for the upcoming Gather operation
 
@@ -176,12 +177,12 @@ class mpiInfo
     
     for ( int i = 0 ; i < ptcl_send_list.size() ; ++i )
       {
-	int id      = ptcl_send_list[ /* TO-DO */ ];
-	Cptcl_PE[i] = ptcl_send_PE  [ /* TO-DO */ ];
-	Cptcl_x [i] = PTCL.x        [ /* TO-DO */ ];
-	Cptcl_y [i] = PTCL.y        [ /* TO-DO */ ];
-	Cptcl_vx[i] = PTCL.vx       [ /* TO-DO */ ];
-	Cptcl_vy[i] = PTCL.vy       [ /* TO-DO */ ];
+	int id      = ptcl_send_list[i];
+	Cptcl_PE[i] = ptcl_send_PE  [i];
+	Cptcl_x [i] = PTCL.x        [i];
+	Cptcl_y [i] = PTCL.y        [i];
+	Cptcl_vx[i] = PTCL.vx       [i];
+	Cptcl_vy[i] = PTCL.vy       [i];
       }
 
     // (5) Allocate and initialize the arrays for upcoming Gather operation to PE0.  The sizeOfGather takes
@@ -195,7 +196,7 @@ class mpiInfo
     //             PE0               PE1                PE2               PE3           
 
 
-    int sizeOfGather = /* TO-DO */;
+    int sizeOfGather = MPI_Comm_size * maxToSend;
     
     int    *Gptcl_PE;  Gptcl_PE = new int    [ /* TO-DO */ ];
     double *Gptcl_x ;  Gptcl_x  = new double [ /* TO-DO */ ];
