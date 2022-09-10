@@ -157,7 +157,7 @@ class mpiInfo
 
     int numToSend = ptcl_send_list.size();      int maxToSend;
 
-    MPI_Iallreduce(numToSend, maxToSend, numberToSend, MPI_INT, MPI_MAX, MPI_COMM_WORLD, &request );  MPI_Wait(&request,&status);  
+    MPI_Iallreduce(numToSend, maxToSend, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD, &request );  MPI_Wait(&request,&status);  
 
     // (2) Allocate contributions to the upcoming Gather operation.  
     // Here, "C" for "Contribution" to be Gathered
@@ -198,11 +198,11 @@ class mpiInfo
 
     int sizeOfGather = MPI_Comm_size * maxToSend;
     
-    int    *Gptcl_PE;  Gptcl_PE = new int    [ /* TO-DO */ ];
-    double *Gptcl_x ;  Gptcl_x  = new double [ /* TO-DO */ ];
-    double *Gptcl_y ;  Gptcl_y  = new double [ /* TO-DO */ ];
-    double *Gptcl_vx;  Gptcl_vx = new double [ /* TO-DO */ ];
-    double *Gptcl_vy;  Gptcl_vy = new double [ /* TO-DO */ ];
+    int    *Gptcl_PE;  Gptcl_PE = new int    [sizeOfGather];  // Particles' destination PEs
+    double *Gptcl_x ;  Gptcl_x  = new double [sizeOfGather];  // Particles' x-positions
+    double *Gptcl_y ;  Gptcl_y  = new double [sizeOfGather];  // Particles' y-positions
+    double *Gptcl_vx;  Gptcl_vx = new double [sizeOfGather];  // Particles' x-velocities
+    double *Gptcl_vy;  Gptcl_vy = new double [sizeOfGather];  // Particles' y-velocities
     
     for ( int i = 0 ; i < sizeOfGather ; ++i ) { Gptcl_PE[i] = -1; Gptcl_x [i] = 0.; Gptcl_y [i] = 0.; Gptcl_vx[i] = 0.; Gptcl_vy[i] = 0.;  }
 
@@ -212,17 +212,17 @@ class mpiInfo
     
     MPI_Barrier(MPI_COMM_WORLD);
     
-    MPI_Iallgather( /* TO-DO */, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather( /* TO-DO */, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather( /* TO-DO */, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather( /* TO-DO */, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather( /* TO-DO */, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_PE, maxToSend, MPI_INT, Gptcl_PE, sizeOfGather, MPI_INT, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_x, maxToSend, MPI_DOUBLE, Gptcl_x, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_y, maxToSend, MPI_DOUBLE, Gptcl_y, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_vx, maxToSend, MPI_DOUBLE, Gptcl_vx, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_vy, maxToSend, MPI_DOUBLE, Gptcl_vy, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // (7) Put in vector form so they can be added to PTCL.  These arrays are 1-based.
+    // (7) Put in vector form so they can be added to PTCL.  These arrays are 1-based. ??:what does 1-based mean? They start at 1? so NP+1 below?
 
-    int Np = 0;  for ( int i = 0 ; i < /* TO-DO */ ; ++i ) if ( Gptcl_PE[i] == myPE ) ++Np;   
+    int Np = 0;  for ( int i = 0 ; i < sizeOfGather ; ++i ) if ( Gptcl_PE[i] == myPE ) ++Np;   
     
     VD  std_add_x  ;  std_add_x.resize  ( Np+1 );
     VD  std_add_y  ;  std_add_y.resize  ( Np+1 );
@@ -231,16 +231,16 @@ class mpiInfo
 
     int count = 1;
     for ( int i = 0 ; i < sizeOfGather ; ++i )
-      if ( Gptcl_PE[i] == /* TO-DO */ ) 
+      if ( Gptcl_PE[i] == myPE )  
 	{
-	  std_add_x [ /* TO-DO */ ] = Gptcl_x[i]; 
-	  std_add_y [ /* TO-DO */ ] = Gptcl_y [i];
-	  std_add_vx[ /* TO-DO */ ] = Gptcl_vx[i];
-	  std_add_vy[ /* TO-DO */ ] = Gptcl_vy[i];
+	  std_add_x [i+1] = Gptcl_x[i]; 
+	  std_add_y [i+1] = Gptcl_y [i];
+	  std_add_vx[i+1] = Gptcl_vx[i];
+	  std_add_vy[i+1] = Gptcl_vy[i];
 	  ++count;                                
 	}
 
-    PTCL.add( /* TO-DO */ );
+    PTCL.add(std_add_x,std_add_y,std_add_vx,std_add_vy);
 
     // (8) Free up memory
 
