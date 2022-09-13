@@ -112,9 +112,9 @@ class mpiInfo
     nei_nw = nei_sw = nei_ne = nei_se = -1;
     
     if ( iPE > 0      && jPE > 0      )  nei_sw = myPE - 1 - nPEx  ;
-    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = /myPE -1 / ;
-    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = /myPE + 1/ ;
-    if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = /mPE + 1 + nPEy/ ;
+    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = myPE -1 ;
+    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = myPE + 1;
+    if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = myPE + 1 + nPEy;
 
     // Acquire memory for the communication between adjacent processors:
     countx = nRealx + 2;
@@ -157,7 +157,7 @@ class mpiInfo
 
     int numToSend = ptcl_send_list.size();      int maxToSend;
 
-    MPI_Iallreduce(numToSend, maxToSend, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD, &request );  MPI_Wait(&request,&status);  
+    MPI_Iallreduce(&numToSend, &maxToSend, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD, &request );  MPI_Wait(&request,&status);  
 
     // (2) Allocate contributions to the upcoming Gather operation.  
     // Here, "C" for "Contribution" to be Gathered
@@ -249,8 +249,6 @@ class mpiInfo
 
   }
 
-  
   int pid(int i,int j) { return (i+1) + (j)*(nRealx+2); }  
 
 };
-

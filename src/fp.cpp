@@ -156,8 +156,7 @@ public:
 	    
 	  }
 
-	// The particle is not in the mesh.  Collect this particle into a holding array that will 
-	// be sent to the neighboring processor.
+	// The particle is not in the mesh.  Collect this particle into a holding array that will be sent to the neighboring processor.
 
 	if ( PTCL.active[k] == -1)
 	  {
