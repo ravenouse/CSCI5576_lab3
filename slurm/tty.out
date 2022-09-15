@@ -1,0 +1,77 @@
+
+---------------------------------------------
+
+ F R E E   P A R T I C L E                   
+ D E M O   C O D E                           
+
+ Running on 
+myPE: 
+myPE: 2 Time = 
+myPE: 3 Time = 0
+1 Time = 0
+0
+4 processors 
+
+---------------------------------------------
+
+
+Input Summary: 
+--------------------------- 
+No. PE   in  x-direction: 2
+             y-direction: 2
+No. Cells in x-direction: 5
+             y-direction: 5
+Flux density            : 10
+End Time                : 2
+Time Step               : 0.1
+
+
+myPE: 0 Time = 0
+
+myPE: 0 Time = 0.1
+
+myPE: 1 Time = 0.1
+
+myPE: 3 Time = 0.1
+
+myPE: 2 Time = 0.1
+
+myPE: 3 Time = 0.2
+
+myPE: 1 Time = 0.2
+
+myPE: 0 Time = 0.2
+
+myPE: 2 Time = 0.2
+
+myPE: 2 Time = 0.3
+
+myPE: 3 Time = 0.3
+
+myPE: 1 Time = 0.3
+
+myPE: 0 Time = 0.3
+
+myPE: 1 Time = 0.4
+
+myPE: 0 Time = 0.4
+
+myPE: 2 Time = 0.4
+
+myPE: 3 Time = 0.4
+
+myPE: 1 Time = 0.5
+
+myPE: 0 Time = 0.5
+
+myPE: 2 Time = 0.5
+
+myPE: 3 Time = 0.5
+
+myPE: 3 Time = 0.6
+
+myPE: 0 Time = 0.6
+
+myPE: 1 Time = 0.6
+
+myPE: 2 Time = 0.6

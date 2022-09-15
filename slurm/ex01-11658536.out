@@ -1,0 +1,17 @@
+==
+||
+|| Begin Execution of fp in slurm batch script.
+||
+==
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11658536.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: shas0159: task 0: Out Of Memory
+[mpiexec@shas0159.rc.int.colorado.edu] HYDT_bscu_wait_for_completion (../../tools/bootstrap/utils/bscu_wait.c:151): one of the processes terminated badly; aborting
+[mpiexec@shas0159.rc.int.colorado.edu] HYDT_bsci_wait_for_completion (../../tools/bootstrap/src/bsci_wait.c:36): launcher returned error waiting for completion
+[mpiexec@shas0159.rc.int.colorado.edu] HYD_pmci_wait_for_completion (../../pm/pmiserv/pmiserv_pmci.c:521): launcher returned error waiting for completion
+[mpiexec@shas0159.rc.int.colorado.edu] main (../../ui/mpich/mpiexec.c:1147): process manager error waiting for completion
+==
+||
+|| Execution of fp in slurm batch script complete.
+||
+==
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11658536.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

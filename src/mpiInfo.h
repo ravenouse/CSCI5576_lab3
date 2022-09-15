@@ -112,9 +112,9 @@ class mpiInfo
     nei_nw = nei_sw = nei_ne = nei_se = -1;
     
     if ( iPE > 0      && jPE > 0      )  nei_sw = myPE - 1 - nPEx  ;
-    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = myPE -1 ;
-    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = myPE + 1;
-    if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = myPE + 1 + nPEy;
+    if ( iPE < nPEx-1 && jPE > 0      )  nei_se = myPE + 1 - nPEx  ;
+    if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = myPE + nPEx - 1  ;
+    if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = myPE + nPEx + 1  ;
 
     // Acquire memory for the communication between adjacent processors:
     countx = nRealx + 2;
@@ -179,10 +179,11 @@ class mpiInfo
       {
 	int id      = ptcl_send_list[i];
 	Cptcl_PE[i] = ptcl_send_PE  [i];
-	Cptcl_x [i] = PTCL.x        [i];
-	Cptcl_y [i] = PTCL.y        [i];
-	Cptcl_vx[i] = PTCL.vx       [i];
-	Cptcl_vy[i] = PTCL.vy       [i];
+	Cptcl_x [i] = PTCL.x        [Cptcl_PE];
+	Cptcl_y [i] = PTCL.y        [Cptcl_PE];
+	Cptcl_vx[i] = PTCL.vx       [Cptcl_PE];
+	Cptcl_vy[i] = PTCL.vy       [Cptcl_PE];
+      }
       }
 
     // (5) Allocate and initialize the arrays for upcoming Gather operation to PE0.  The sizeOfGather takes
@@ -196,7 +197,7 @@ class mpiInfo
     //             PE0               PE1                PE2               PE3           
 
 
-    int sizeOfGather = MPI_COMM_WORLD * maxToSend;
+    int sizeOfGather =  numPE * maxToSend; // Total number of particles to be gathered
     
     int    *Gptcl_PE;  Gptcl_PE = new int    [sizeOfGather];  // Particles' destination PEs
     double *Gptcl_x ;  Gptcl_x  = new double [sizeOfGather];  // Particles' x-positions
@@ -212,15 +213,15 @@ class mpiInfo
     
     MPI_Barrier(MPI_COMM_WORLD);
     
-    MPI_Iallgather(Cptcl_PE, maxToSend, MPI_INT, Gptcl_PE, sizeOfGather, MPI_INT, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather(Cptcl_x, maxToSend, MPI_DOUBLE, Gptcl_x, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather(Cptcl_y, maxToSend, MPI_DOUBLE, Gptcl_y, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather(Cptcl_vx, maxToSend, MPI_DOUBLE, Gptcl_vx, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
-    MPI_Iallgather(Cptcl_vy, maxToSend, MPI_DOUBLE, Gptcl_vy, sizeOfGather, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_PE, maxToSend, MPI_INT, Gptcl_PE, maxToSend, MPI_INT, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_x, maxToSend, MPI_DOUBLE, Gptcl_x, maxToSend, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_y, maxToSend, MPI_DOUBLE, Gptcl_y, maxToSend, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_vx, maxToSend, MPI_DOUBLE, Gptcl_vx, maxToSend, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
+    MPI_Iallgather(Cptcl_vy, maxToSend, MPI_DOUBLE, Gptcl_vy, maxToSend, MPI_DOUBLE, MPI_COMM_WORLD, &request);  MPI_Wait(&request,&status);  
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // (7) Put in vector form so they can be added to PTCL.  These arrays are 1-based. ??:what does 1-based mean? They start at 1? so NP+1 below?
+    // (7) Put in vector form so they can be added to PTCL.  These arrays are 1-based.
 
     int Np = 0;  for ( int i = 0 ; i < sizeOfGather ; ++i ) if ( Gptcl_PE[i] == myPE ) ++Np;   
     
@@ -233,10 +234,10 @@ class mpiInfo
     for ( int i = 0 ; i < sizeOfGather ; ++i )
       if ( Gptcl_PE[i] == myPE )  
 	{
-	  std_add_x [i+1] = Gptcl_x[i]; 
-	  std_add_y [i+1] = Gptcl_y [i];
-	  std_add_vx[i+1] = Gptcl_vx[i];
-	  std_add_vy[i+1] = Gptcl_vy[i];
+	  std_add_x [count] = Gptcl_x[i]; 
+	  std_add_y [count] = Gptcl_y [i];
+	  std_add_vx[count] = Gptcl_vx[i];
+	  std_add_vy[count] = Gptcl_vy[i];
 	  ++count;                                
 	}
 

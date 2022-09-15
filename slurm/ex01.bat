@@ -4,7 +4,7 @@
 # |
 # | This is a batch script for running a MPI parallel job on Summit
 # |
-# | (o) To submit this job, enter:  sbatch --export=CODE='/home/scru5660/HPSC/codes/fd_mpi/src' ex_01.bat 
+# | (o) To submit this job, enter:  sbatch --export=CODE='/projects/zhwa3087/CSCI5576/lab3/src'ex_01.bat 
 # |
 # | (o) To check the status of this job, enter: squeue -u <username>
 # |
@@ -30,7 +30,8 @@
 
 module purge
 module load intel
-module load impi 
+module load impi
+
 
 # -
 # |
@@ -44,18 +45,10 @@ echo "|| Begin Execution of fp in slurm batch script."
 echo "||"
 echo "=="
 
-mpirun -n 4 $CODE/fp -nPEx 2 -nPEy 2 -nCellx 5 -nCelly 5 > tty.out
+mpirun -n 4 /projects/zhwa3087/CSCI5576/lab3/src/fp -nPEx 2 -nPEy 2 -nCellx 5  -nCelly 5 -flux 10 -tEnd 2 -dt .1 > tty.out
 
 echo "=="
 echo "||"
 echo "|| Execution of fp in slurm batch script complete."
 echo "||"
 echo "=="
-
-
-
-
-
-
-
-
