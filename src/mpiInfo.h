@@ -179,10 +179,10 @@ class mpiInfo
       {
 	int id      = ptcl_send_list[i];
 	Cptcl_PE[i] = ptcl_send_PE  [i];
-	Cptcl_x [i] = PTCL.x        [Cptcl_PE];
-	Cptcl_y [i] = PTCL.y        [Cptcl_PE];
-	Cptcl_vx[i] = PTCL.vx       [Cptcl_PE];
-	Cptcl_vy[i] = PTCL.vy       [Cptcl_PE];
+	Cptcl_x [i] = PTCL.x        [id];
+	Cptcl_y [i] = PTCL.y        [id];
+	Cptcl_vx[i] = PTCL.vx       [id];
+	Cptcl_vy[i] = PTCL.vy       [id];
       }
       }
 
@@ -197,8 +197,7 @@ class mpiInfo
     //             PE0               PE1                PE2               PE3           
 
 
-    int sizeOfGather =  numPE * maxToSend; // Total number of particles to be gathered
-    
+    int sizeOfGather =  MPI_Comm_size * maxToSend;
     int    *Gptcl_PE;  Gptcl_PE = new int    [sizeOfGather];  // Particles' destination PEs
     double *Gptcl_x ;  Gptcl_x  = new double [sizeOfGather];  // Particles' x-positions
     double *Gptcl_y ;  Gptcl_y  = new double [sizeOfGather];  // Particles' y-positions
