@@ -38,6 +38,7 @@ rm *.plt
 rm 0 1 2 3
 rm 0.sed 1.sed 2.sed 3.sed
 rm vg
+rm *.out
 
 # -
 # |
