@@ -184,7 +184,6 @@ class mpiInfo
 	Cptcl_vx[i] = PTCL.vx       [id];
 	Cptcl_vy[i] = PTCL.vy       [id];
       }
-      }
 
     // (5) Allocate and initialize the arrays for upcoming Gather operation to PE0.  The sizeOfGather takes
     //     into account the number of processors, like this figure:
@@ -197,7 +196,7 @@ class mpiInfo
     //             PE0               PE1                PE2               PE3           
 
 
-    int sizeOfGather =  MPI_Comm_size * maxToSend;
+    int sizeOfGather =  nPEx*nPEy * maxToSend;
     int    *Gptcl_PE;  Gptcl_PE = new int    [sizeOfGather];  // Particles' destination PEs
     double *Gptcl_x ;  Gptcl_x  = new double [sizeOfGather];  // Particles' x-positions
     double *Gptcl_y ;  Gptcl_y  = new double [sizeOfGather];  // Particles' y-positions
