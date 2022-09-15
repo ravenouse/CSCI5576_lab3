@@ -196,7 +196,7 @@ class mpiInfo
     //             PE0               PE1                PE2               PE3           
 
 
-    int sizeOfGather =  nPEx*nPEy * maxToSend;
+    int sizeOfGather =  numPE * maxToSend;
     int    *Gptcl_PE;  Gptcl_PE = new int    [sizeOfGather];  // Particles' destination PEs
     double *Gptcl_x ;  Gptcl_x  = new double [sizeOfGather];  // Particles' x-positions
     double *Gptcl_y ;  Gptcl_y  = new double [sizeOfGather];  // Particles' y-positions

@@ -55,14 +55,6 @@ mpirun -n 4 /projects/zhwa3087/CSCI5576/lab3/src/fp -nPEx 2 -nPEy 2 -nCellx 5  -
 
 ./writePlotCmd.py
 
-rm *.sed
-rm 0 1 2 3
-
-grep 'myPE: 0' tmp > 0.sed  ; sed s/'myPE: 0'/''/g 0.sed > 0
-grep 'myPE: 1' tmp > 1.sed  ; sed s/'myPE: 1'/''/g 1.sed > 1
-grep 'myPE: 2' tmp > 2.sed  ; sed s/'myPE: 2'/''/g 2.sed > 2
-grep 'myPE: 3' tmp > 3.sed  ; sed s/'myPE: 3'/''/g 3.sed > 3
-
 echo "=="
 echo "||"
 echo "|| Execution of fp in slurm batch script complete."

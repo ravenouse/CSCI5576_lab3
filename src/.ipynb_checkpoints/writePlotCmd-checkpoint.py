@@ -12,16 +12,18 @@ import glob
 # ||
 # ==
 
-def writePlotCmd(argv):
+def writePlotCmd(argv = 'projects/zhwa3087/CSCI5576/lab3/slurm'):
 
 
 
     # List of all ptcl files
     
     ptclList = glob.glob("ptcl*.plt")
-
     # Parse the filenames counting the number of PEs for this run
-
+    
+    print(argv)
+    print(ptclList)
+    
     PElist = []
     timeList = []
     

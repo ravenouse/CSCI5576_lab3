@@ -12,7 +12,7 @@ import glob
 # ||
 # ==
 
-def writePlotCmd(argv = 'projects/zhwa3087/CSCI5576/lab3/slurm'):
+def writePlotCmd(argv):
 
 
 

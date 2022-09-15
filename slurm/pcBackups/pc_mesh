@@ -1,0 +1,171 @@
+reset
+set xrange [-.1:1.1]
+set yrange [-.1:1.1]
+plot \
+"mesh_0_0.plt" w l , \
+"mesh_1_0.plt" w l , \
+"mesh_2_0.plt" w l , \
+"mesh_3_0.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_0.plt" w l , \
+"mesh_1_0.plt" w l , \
+"mesh_2_0.plt" w l , \
+"mesh_3_0.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_0.plt" w l , \
+"mesh_1_0.plt" w l , \
+"mesh_2_0.plt" w l , \
+"mesh_3_0.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_0.plt" w l , \
+"mesh_1_0.plt" w l , \
+"mesh_2_0.plt" w l , \
+"mesh_3_0.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_1.plt" w l , \
+"mesh_1_1.plt" w l , \
+"mesh_2_1.plt" w l , \
+"mesh_3_1.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_1.plt" w l , \
+"mesh_1_1.plt" w l , \
+"mesh_2_1.plt" w l , \
+"mesh_3_1.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_1.plt" w l , \
+"mesh_1_1.plt" w l , \
+"mesh_2_1.plt" w l , \
+"mesh_3_1.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_1.plt" w l , \
+"mesh_1_1.plt" w l , \
+"mesh_2_1.plt" w l , \
+"mesh_3_1.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_2.plt" w l , \
+"mesh_1_2.plt" w l , \
+"mesh_2_2.plt" w l , \
+"mesh_3_2.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_2.plt" w l , \
+"mesh_1_2.plt" w l , \
+"mesh_2_2.plt" w l , \
+"mesh_3_2.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_2.plt" w l , \
+"mesh_1_2.plt" w l , \
+"mesh_2_2.plt" w l , \
+"mesh_3_2.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_2.plt" w l , \
+"mesh_1_2.plt" w l , \
+"mesh_2_2.plt" w l , \
+"mesh_3_2.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_3.plt" w l , \
+"mesh_1_3.plt" w l , \
+"mesh_2_3.plt" w l , \
+"mesh_3_3.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_3.plt" w l , \
+"mesh_1_3.plt" w l , \
+"mesh_2_3.plt" w l , \
+"mesh_3_3.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_3.plt" w l , \
+"mesh_1_3.plt" w l , \
+"mesh_2_3.plt" w l , \
+"mesh_3_3.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_3.plt" w l , \
+"mesh_1_3.plt" w l , \
+"mesh_2_3.plt" w l , \
+"mesh_3_3.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_4.plt" w l , \
+"mesh_1_4.plt" w l , \
+"mesh_2_4.plt" w l , \
+"mesh_3_4.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_4.plt" w l , \
+"mesh_1_4.plt" w l , \
+"mesh_2_4.plt" w l , \
+"mesh_3_4.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_4.plt" w l , \
+"mesh_1_4.plt" w l , \
+"mesh_2_4.plt" w l , \
+"mesh_3_4.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_4.plt" w l , \
+"mesh_1_4.plt" w l , \
+"mesh_2_4.plt" w l , \
+"mesh_3_4.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_5.plt" w l , \
+"mesh_1_5.plt" w l , \
+"mesh_2_5.plt" w l , \
+"mesh_3_5.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_5.plt" w l , \
+"mesh_1_5.plt" w l , \
+"mesh_2_5.plt" w l , \
+"mesh_3_5.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_5.plt" w l , \
+"mesh_1_5.plt" w l , \
+"mesh_2_5.plt" w l , \
+"mesh_3_5.plt" w l , \
+
+pause .1
+plot \
+"mesh_0_5.plt" w l , \
+"mesh_1_5.plt" w l , \
+"mesh_2_5.plt" w l , \
+"mesh_3_5.plt" w l , \
+
+pause .1
