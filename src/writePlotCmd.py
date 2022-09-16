@@ -20,10 +20,10 @@ def writePlotCmd(argv = 'projects/zhwa3087/CSCI5576/lab3/slurm'):
     
     ptclList = glob.glob("ptcl*.plt")
     # Parse the filenames counting the number of PEs for this run
-    
+    print('calling writePlotCmd')
     print(argv)
     print(ptclList)
-    
+    print(os.getcwd())
     PElist = []
     timeList = []
     

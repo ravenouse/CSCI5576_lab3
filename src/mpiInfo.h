@@ -116,6 +116,14 @@ class mpiInfo
     if ( iPE > 0      && jPE < nPEy-1 )  nei_nw = myPE + nPEx - 1  ;
     if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = myPE + nPEx + 1  ;
 
+    //check the pe 3
+    if (myPE == 3)
+      {
+      printf("myPE: %d, nei_n = %d, nei_s = %d, nei_e = %d, nei_w = %d", myPE, nei_n, nei_s, nei_e, nei_w);
+      printf("myPE: %d, nei_sw = %d, nei_se = %d, nei_nw = %d, nei_ne = %d", myPE, nei_sw, nei_se, nei_nw, nei_ne);
+
+      }
+
     // Acquire memory for the communication between adjacent processors:
     countx = nRealx + 2;
     county = nRealy + 2;

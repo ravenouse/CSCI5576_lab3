@@ -30,13 +30,12 @@ void plot(string descriptor, int timeIdx , mpiInfo &myMPI)
     //    Filename is the following concatenated information:
     //    descriptor + "_" + myPE + "_" + timeIdx + ".plt"
 
-    string filename = descriptor + "_" + myPE_str.str() + "_" + Idx_str.str() + ".plt";
+    string filename = "./plt/" + descriptor + "_" + myPE_str.str() + "_" + Idx_str.str() + ".plt";
 
     // Open plot file
     
     std::fstream f;
-    f.open(filename.c_str(),std::ios::out);
-
+    f.open(filename.c_str(),std::ios::out);  
     // Write to plot file
 
     int p[6];

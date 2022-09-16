@@ -1,0 +1,22 @@
+rm: cannot remove 'tmp*': No such file or directory
+rm: cannot remove '*.plt': No such file or directory
+rm: cannot remove 'vg': No such file or directory
+==
+||
+|| Begin Execution of fp in slurm batch script.
+||
+==
+calling writePlotCmd
+/projects/zhwa3087/CSCI5576/lab3/slurm
+[]
+[]
+rm: cannot remove '*.sed': No such file or directory
+rm: cannot remove '0': No such file or directory
+rm: cannot remove '1': No such file or directory
+rm: cannot remove '2': No such file or directory
+rm: cannot remove '3': No such file or directory
+==
+||
+|| Execution of fp in slurm batch script complete.
+||
+==
