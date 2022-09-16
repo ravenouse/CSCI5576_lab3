@@ -1,20 +1,61 @@
-myPE: 1 Time = 0
+myPE: 1, nei_n = 3, nei_s = -1, nei_e = -1, nei_w = 0
+myPE: 1, nei_sw = -1, nei_se = -1, nei_nw = 2, nei_ne = -1
+myPE: 1 Time = 02 Time = 0
 myPE: 1 Time = 0.1
-myPE: 1
+myPE: 1 Time = 0.2
 myPE: 1 Time = 0.3
 myPE: 1 Time = 0.4
 myPE: 1 Time = 0.5
 myPE: 1 Time = 0.6
 myPE: 1 Time = 0.7
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 0.8
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 0.9
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.1
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.2
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.3
-myPE: 1 Time = 
+myPE: 2myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+ Time = myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1 Time = 1.4
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.5
-myPE: 1
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1 Time = 1.6
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.7
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.8
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
 myPE: 1 Time = 1.9
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 
+myPE: 1, ptcl_send_PE:1, iPEnew:0, jPEnew:0 

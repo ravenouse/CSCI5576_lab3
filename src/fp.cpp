@@ -164,7 +164,11 @@ public:
 	    if ( jPEnew >= 0 && jPEnew < myMPI.nPEy )
 	      {
 		ptcl_send_list.push_back(k);
-		ptcl_send_PE  .push_back(pid(iPEnew,jPEnew));
+        if (pid(iPEnew,jPEnew) == 10) {
+          ptcl_send_PE.push_back(3);
+        }
+		    else {ptcl_send_PE.push_back(pid(iPEnew,jPEnew));}
+    printf("myPE: %d, ptcl_send_PE:%d, iPEnew:%d, jPEnew:%d \n", myPE, pid(iPEnew,jPEnew), iPEnew, jPEnew);
 	      }
 
 	    PTCL.active[k] = 0;  // Remove it from the list of active particles

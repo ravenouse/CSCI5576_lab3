@@ -117,12 +117,12 @@ class mpiInfo
     if ( iPE < nPEx-1 && jPE < nPEy-1 )  nei_ne = myPE + nPEx + 1  ;
 
     //check the pe 3
-    if (myPE == 3)
-      {
-      printf("myPE: %d, nei_n = %d, nei_s = %d, nei_e = %d, nei_w = %d", myPE, nei_n, nei_s, nei_e, nei_w);
-      printf("myPE: %d, nei_sw = %d, nei_se = %d, nei_nw = %d, nei_ne = %d", myPE, nei_sw, nei_se, nei_nw, nei_ne);
+   
+      
+    printf("myPE: %d, nei_n = %d, nei_s = %d, nei_e = %d, nei_w = %d\n", myPE, nei_n, nei_s, nei_e, nei_w);
+    printf("myPE: %d, nei_sw = %d, nei_se = %d, nei_nw = %d, nei_ne = %d\n", myPE, nei_sw, nei_se, nei_nw, nei_ne);
 
-      }
+      
 
     // Acquire memory for the communication between adjacent processors:
     countx = nRealx + 2;
@@ -187,6 +187,7 @@ class mpiInfo
       {
 	int id      = ptcl_send_list[i];
 	Cptcl_PE[i] = ptcl_send_PE  [i];
+  // printf("myPE: %d, id = %d, ptcl_send_PE[id] = %d\n", myPE, id, ptcl_send_PE[id]);
 	Cptcl_x [i] = PTCL.x        [id];
 	Cptcl_y [i] = PTCL.y        [id];
 	Cptcl_vx[i] = PTCL.vx       [id];

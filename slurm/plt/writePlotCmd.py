@@ -45,7 +45,7 @@ def writePlotCmd(argv):
 
     # Write combined plot command
     
-    g = open('pc','w')
+    g = open('./plt/pc','w')
     print >> g , 'reset'
     print >> g , 'set xrange [-.1:1.1]'
     print >> g , 'set yrange [-.1:1.1]'
@@ -60,7 +60,7 @@ def writePlotCmd(argv):
 
     # Write mesh only command
     
-    g = open('pc_mesh','w')
+    g = open('./plt/pc_mesh','w')
     print >> g , 'reset'
     print >> g , 'set xrange [-.1:1.1]'
     print >> g , 'set yrange [-.1:1.1]'
